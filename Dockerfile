@@ -5,8 +5,7 @@ RUN docker-php-ext-install zip
 
 RUN apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
-RUN NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1)
-RUN docker-php-ext-install -j${NPROC} gd
+RUN docker-php-ext-install gd
 RUN apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev
 
 RUN set -ex \
